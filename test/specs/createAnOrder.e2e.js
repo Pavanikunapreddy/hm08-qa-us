@@ -35,6 +35,7 @@ describe('Create an order', () => {
         await browser.url(`/`)
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
         await page.supportivePlaneSelected();
+        await expect($(`${page.supportiveActive}`)).toBeExisting();
         
     })
 
@@ -43,21 +44,22 @@ describe('Create an order', () => {
         await browser.url(`/`)
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
         await page.addPaymentMethod();
+        await expect($(`${page.paymenMethodCloseButton}`)).toBeExisting();
        
     })
 
     it('Writing a message for the driver', async () => {
         await browser.url(`/`)
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
-        await page.addMessageForTheDriver();   
-       
-    })
+        await page.addMessageForTheDriver(); 
+        await expect($(`${page.messageToTheDriverFeild}`)).toBeExisting();
+        })
 
     it('Ordering a blanket and handkerchief', async () => {
         await browser.url(`/`)
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
         await page.orderingBlanketAndHandkerchief();
-        
+        await expect($(`${page.blanketAndHandkerchief}`)).toBeExisting();
         
     })
 
